@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Room from './pages/Room'
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
+import { AuthProvider } from './AuthService'
+import LoggedInRoute from './LoggedInRoute'
+
+const App = () => {
+    return (
+        <AuthProvider>
+            <h1>Chat</h1>
+            <Router>
+                <Switch>
+                    <LoggedInRoute path="/" exact component={Room} />
+                    <Route path="/login" exact component={Login} />
+                    <Route path="/signup" exact component={SignUp} />
+                </Switch>
+            </Router>
+        </AuthProvider>
+    )
 }
 
-export default App;
+export default App
+
+
+// ディレクトリ内にyarn.lockがあるひと
+// yarn add react-router-dom
+
+// package-lock.jsonがあるひと
+// npm install react-router-dom
+// npm install firebase
