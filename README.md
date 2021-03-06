@@ -1,7 +1,7 @@
 # このアプリについて
 このアプリはCodeVillgageの講義で作成したチャットアプリです.
 
-47期生の竹本が変更しました。
+47期生の竹本が変更です。
 
 
 # Getting Started with Create React App
