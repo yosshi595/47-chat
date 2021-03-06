@@ -4,6 +4,9 @@ oohara hironori
 
 47期生の竹本が変更です。
 
+このアプリは CodeVillgage の講義で作成したチャットアプリです.
+
+# 古賀参上！！
 
 # Getting Started with Create React App
 
