@@ -13,7 +13,7 @@ import LoggedInRoute from './LoggedInRoute'
 const App = () => {
     return (
         <AuthProvider>
-            <h1>Chat</h1>
+            <h1>チャット</h1>
             <Router>
                 <Switch>
                     <LoggedInRoute path="/" exact component={Room} />
