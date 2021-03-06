@@ -1,6 +1,6 @@
 # このアプリについて
 このアプリはCodeVillgageの講義で作成したチャットアプリです.
-oohara
+oohara hironori
 
 
 # Getting Started with Create React App
