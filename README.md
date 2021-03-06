@@ -1,6 +1,8 @@
 # このアプリについて
-このアプリはCodeVillgageの講義で作成したチャットアプリです.
 
+このアプリは CodeVillgage の講義で作成したチャットアプリです.
+
+# 古賀参上！！
 
 # Getting Started with Create React App
 
