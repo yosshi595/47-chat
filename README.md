@@ -1,5 +1,6 @@
 # このアプリについて
-このアプリはCodeVillgageの講義で作成したチャットアプリです
+このアプリはCodeVillgageの講義で作成したチャットアプリです.
+
 
 # Getting Started with Create React App
 
