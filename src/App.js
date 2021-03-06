@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import { AuthProvider } from './AuthService'
 import LoggedInRoute from './LoggedInRoute'
 
+
 const App = () => {
     return (
         <AuthProvider>
