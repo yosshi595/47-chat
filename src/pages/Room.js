@@ -10,12 +10,17 @@ const Room = () => {
   // ここでuserの情報を扱えるようにcontextを使って書く
   const user = useContext(AuthContext);
 
+  // firebase.firestore().collection("message").doc("")
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     firebase.firestore().collection("message").add({
       message: value,
       user: user.displayName,
     });
+
   };
 
   useEffect(() => {
@@ -24,7 +29,8 @@ const Room = () => {
       .collection("message")
       .onSnapshot((snapshot) => {
         const messages = snapshot.docs.map((doc) => {
-          return doc.data();
+          // return doc.data();
+          return { message: doc.data().message, user: doc.data().user, id: doc.id }
         });
         setMessages(messages);
       });
@@ -36,7 +42,7 @@ const Room = () => {
         {messages.map((message) => {
           return (
             // <li>{message.user} : {message.message}</li>
-            <Messages user={message.user} message={message.message} />
+            <Messages user={message.user} message={message.message} id={message.id} />
           );
         })}
       </ul>
