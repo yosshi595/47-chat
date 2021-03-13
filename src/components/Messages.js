@@ -1,6 +1,7 @@
-const Messages = ({user, message}) => {
+const Messages = ({ user, message }) => {
     return (
-        <li>{user} : {message}</li>
+        <li>{user} : {message}
+            <button>削除</button></li>
     )
 }
 
