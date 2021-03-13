@@ -12,8 +12,6 @@ const Room = () => {
 
   // firebase.firestore().collection("message").doc("")
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     firebase.firestore().collection("message").add({
