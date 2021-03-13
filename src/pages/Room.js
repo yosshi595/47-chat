@@ -19,6 +19,7 @@ const Room = () => {
     firebase.firestore().collection("message").add({
       message: value,
       user: user.displayName,
+      time: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
   };
@@ -27,6 +28,7 @@ const Room = () => {
     firebase
       .firestore()
       .collection("message")
+      .orderBy('time')
       .onSnapshot((snapshot) => {
         const messages = snapshot.docs.map((doc) => {
           // return doc.data();
