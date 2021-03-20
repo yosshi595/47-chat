@@ -9,6 +9,7 @@ const Room = () => {
 
   // ここでuserの情報を扱えるようにcontextを使って書く
   const user = useContext(AuthContext);
+  console.log(user);
 
   // firebase.firestore().collection("message").doc("")
 
