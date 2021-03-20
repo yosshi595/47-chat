@@ -14,23 +14,30 @@ const Room = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (value === "") {
+      return;
+    }
     firebase.firestore().collection("message").add({
       message: value,
       user: user.displayName,
       time: firebase.firestore.FieldValue.serverTimestamp(),
     });
-
+    setValue("");
   };
 
   useEffect(() => {
     firebase
       .firestore()
       .collection("message")
-      .orderBy('time')
+      .orderBy("time")
       .onSnapshot((snapshot) => {
         const messages = snapshot.docs.map((doc) => {
           // return doc.data();
-          return { message: doc.data().message, user: doc.data().user, id: doc.id }
+          return {
+            message: doc.data().message,
+            user: doc.data().user,
+            id: doc.id,
+          };
         });
         setMessages(messages);
       });
@@ -42,12 +49,21 @@ const Room = () => {
         {messages.map((message) => {
           return (
             // <li>{message.user} : {message.message}</li>
-            <Messages user={message.user} message={message.message} id={message.id} />
+            <Messages
+              key={message.id}
+              user={message.user}
+              message={message.message}
+              id={message.id}
+            />
           );
         })}
       </ul>
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={(e) => setValue(e.target.value)}></input>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        ></input>
         <button type="submit">送信</button>
       </form>
       <button
