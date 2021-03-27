@@ -5,10 +5,11 @@ import firebase from "./../config/firebase";
 const UserEdit = () => {
     // const [email, setEmail] = useState("");
     // const [password, setPassword] = useState("");
+    const user = useContext(AuthContext);
+    console.log(user)
     const [name, setName] = useState("");
     const [icon, setIcon] = useState("");
 
-    const user = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,14 +38,39 @@ const UserEdit = () => {
 
 
 
-        user.updateProfile({
-            displayName: name,
-            // photoURL: URL
-        }).then(function () {
-            // Update successful.
-        }).catch(function (error) {
-            // An error happened.
-        });
+        
+
+        // if (name == "") {
+        //     setName(user.displayName);
+        //     console.log(user.displayName);
+        // }
+        const saveName = name === "" ? user.displayName:name
+        console.log(saveName)
+
+        if (icon[0]) {
+            var storageRef = firebase.storage().ref();
+            //         // Create a reference to 'mountains.jpg'    
+            var mountainsRef = storageRef.child(icon[0].name);
+            var file = icon[0];
+            mountainsRef.put(file).then(function (snapshot) {
+                console.log("Uploaded a blob or file!");
+                snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    console.log(downloadURL);
+                    user.updateProfile({
+                        displayName: saveName,
+                        photoURL: downloadURL,
+                    });
+                });
+            });
+        } else {
+            user.updateProfile({
+                displayName: saveName,
+            }).then(function () {
+                // Update successful.
+            }).catch(function (error) {
+                // An error happened.
+            });
+        }
 
     };
 
