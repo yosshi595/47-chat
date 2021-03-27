@@ -9,7 +9,7 @@ const Room = () => {
 
   // ここでuserの情報を扱えるようにcontextを使って書く
   const user = useContext(AuthContext);
-  console.log(user);
+  console.log(user.photoURL);
 
   // firebase.firestore().collection("message").doc("")
 
@@ -22,6 +22,7 @@ const Room = () => {
       message: value,
       user: user.displayName,
       time: firebase.firestore.FieldValue.serverTimestamp(),
+      photoURL: user.photoURL,
     });
     setValue("");
   };
@@ -38,6 +39,7 @@ const Room = () => {
             message: doc.data().message,
             user: doc.data().user,
             id: doc.id,
+            photoURL: doc.data().photoURL,
           };
         });
         setMessages(messages);
@@ -55,6 +57,7 @@ const Room = () => {
               user={message.user}
               message={message.message}
               id={message.id}
+              photoURL={message.photoURL}
             />
           );
         })}
