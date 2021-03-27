@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import { AuthProvider } from './AuthService'
 import LoggedInRoute from './LoggedInRoute'
+import UserEdit from './pages/UserEdit'
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
                     <LoggedInRoute path="/" exact component={Room} />
                     <Route path="/login" exact component={Login} />
                     <Route path="/signup" exact component={SignUp} />
+                    <Route path="/useredit" exact component={UserEdit} />
                 </Switch>
             </Router>
         </AuthProvider>
